@@ -1,9 +1,9 @@
-const post = `## Write up for corctf2025 \`crypto/rules\`
+const post = `## Write up for corctf2025 crypto/rules
 
 ### Challenge Summary
 \`rules\` is a CTF challenge in which the user must submit an array of bytes and a guess of the resulting byte array after an algorithm, or rule, has been applied to the byte array a random number of times.
 
-<img src="./rulesgui1.png" style="display:block;margin:auto;" alt="Image showing the CLI of the rules challenge" width="400"/>
+<img src="../../assets/rulesgui1.png" style="display:block;margin:auto;" alt="Image showing the CLI of the rules challenge" width="400"/>
 
 The challenge lies in constructing a byte array with a predictable behavior even when being manipulated an unknown number of times.
 
@@ -15,13 +15,13 @@ print("Enter the bytes:")
 user_input = input("> ")
 arr = json.loads(user_input)
 if not isinstance(arr, list) or not all(isinstance(x, int) for x in arr):
-	print("Invalid input")
-	return
-	
+    print("Invalid input")
+    return
+
 data = np.array(arr, dtype=np.uint8)
 if len(data) < 1024:
-	print("Too short")
-	return
+    print("Too short")
+    return
 	
 print("Make a guess:")
 user_guess = input("> ")
@@ -29,17 +29,17 @@ user_guess = user_input
 guess = np.array(json.loads(user_guess), dtype=np.uint8)
 
 if guess.shape != data.shape:
-	print("Invalid guess")
-	return
+    print("Invalid guess")
+    return
 
 print("Checking guess...")
 num_rounds = random.randint(100, 16000)
 
 for i in range(num_rounds):
-	data = rule(data)
-	if not np.any(data):
-		print("All zeroes!")
-		return
+    data = rule(data)
+    if not np.any(data):
+        print("All zeroes!")
+        return
 \`\`\`
 
 1. The byte array must be submitted as an array of 8 bit integers
@@ -83,9 +83,9 @@ def rule(01234567):
     right = rotate_right(01234567) # 70123456
     
     part1 = ( left &  right &  data) # bitwise AND of all bytes
-	part2 = (~left & ~right & ~data) # bitwise NOR of all bytes
-	part3 = (~left &  right & ~data) # bitwise NOR of left and data, then bitwise AND with right
-	
+    part2 = (~left & ~right & ~data) # bitwise NOR of all bytes
+    part3 = (~left &  right & ~data) # bitwise NOR of left and data, then bitwise AND with right
+
     return ~(part1 | part2 | part3)  # bitwise NOR of all bytes
 \`\`\`
 
@@ -97,9 +97,9 @@ def rule(0b00000001):
     right = rotate_right(0b00000001) # 0b10000000
     
     part1 = ( 0b00000010 &  0b10000000 &  0b00000001) # 0b00000000
-	part2 = (~0b00000010 & ~0b10000000 & ~0b00000001) # 0b01111100
-	part3 = (~0b00000010 &  0b10000000 & ~0b00000001) # 0b10000000
-	
+    part2 = (~0b00000010 & ~0b10000000 & ~0b00000001) # 0b01111100
+    part3 = (~0b00000010 &  0b10000000 & ~0b00000001) # 0b10000000
+
     return ~(0b00000000 | 0b01111100 | 0b10000000)    # 0b00000011 (3)
 \`\`\`
 
@@ -169,9 +169,9 @@ def rule(0b01110111): #119
     right = rotate_right(0b01110111) # 0b10111011
     
     part1 = ( 0b11101110 &  0b10111011 &  0b01110111) # 0b00100010
-	part2 = (~0b11101110 & ~0b10111011 & ~0b01110111) # 0b00000000
-	part3 = (~0b11101110 &  0b10111011 & ~0b01110111) # 0b00000000
-	
+    part2 = (~0b11101110 & ~0b10111011 & ~0b01110111) # 0b00000000
+    part3 = (~0b11101110 &  0b10111011 & ~0b01110111) # 0b00000000
+
     return ~(0b00100010 | 0b00000000 | 0b00000000)    # 0b11011101 (221)
 \`\`\`
 
@@ -200,10 +200,10 @@ You might be wondering at this point:
 
 These are valid questions, and after the CTF, I took the time to write some code to generate a graph of all of the possible byte arrays made up of only 1 integer.
 
-<img src="./rulesgraph2.png" style="display:block;margin:auto;" alt="Image showing a directional graph of the byte arrays" width="600"/>
+<img src="../../assets/rulesgraph2.png" style="display:block;margin:auto;" alt="Image showing a directional graph of the byte arrays" width="600"/>
 
 As you can see, 2 is the smallest cycle; however, there are 2 cycles of 2. In addition, there are 3 other cycles. 2 cycles of 16, and a cycle of 8 that is disconnected from the rest of the graph. The component at the top is all the numbers that go to 0, which is stable by itself. While not immediately present, the mirrored aspect of the graph is due to many components being identical but bit rotated by 1.
 
-There may be a byte array that is stable, but it couldn't be made up of only one repeated byte.`;
+While no stable byte arrays made of one repeated byte exist, there may be stable byte arrays made of mixed bytes.`;
 
 export default post ;
