@@ -15,7 +15,7 @@ const outDir = resolve(__dirname, 'dist')
 export default defineConfig({
   plugins: [react()],
   root: root,
-  base : '/',
+  base : '/edenpowers.github.io/',
   build: {
     outDir,
     emptyOutDir: true,
