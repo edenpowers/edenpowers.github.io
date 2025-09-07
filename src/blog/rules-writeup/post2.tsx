@@ -1,11 +1,4 @@
-const post = `## Write up for corctf2025 crypto/rules
-
-### Challenge Summary
-\`rules\` is a CTF challenge in which the user must submit an array of bytes and a guess of the resulting byte array after an algorithm, or rule, has been applied to the byte array a random number of times.
-
-<img src="../../assets/rulesgui1.png" style="display:block;margin:auto;" alt="Image showing the CLI of the rules challenge" width="400"/>
-
-The challenge lies in constructing a byte array with a predictable behavior even when being manipulated an unknown number of times.
+const post2 = `The challenge lies in constructing a byte array with a predictable behavior even when being manipulated an unknown number of times.
 
 ### Constraints
 Before constructing this byte array, some constraints must be met by the byte array, which can be seen by looking at the main body of the provided program.
@@ -198,12 +191,6 @@ You might be wondering at this point:
 1. Is 2 the shortest loop?
 2. Couldn't we just test all the byte arrays? There's only 256 8 bit integers?
 
-These are valid questions, and after the CTF, I took the time to write some code to generate a graph of all of the possible byte arrays made up of only 1 integer.
+These are valid questions, and after the CTF, I took the time to write some code to generate a graph of all of the possible byte arrays made up of only 1 integer.`
 
-<img src="../../assets/rulesgraph2.png" style="display:block;margin:auto;" alt="Image showing a directional graph of the byte arrays" width="600"/>
-
-As you can see, 2 is the smallest cycle; however, there are 2 cycles of 2. In addition, there are 3 other cycles. 2 cycles of 16, and a cycle of 8 that is disconnected from the rest of the graph. The component at the top is all the numbers that go to 0, which is stable by itself. While not immediately present, the mirrored aspect of the graph is due to many components being identical but bit rotated by 1.
-
-While no stable byte arrays made of one repeated byte exist, there may be stable byte arrays made of mixed bytes.`;
-
-export default post ;
+export default post2;

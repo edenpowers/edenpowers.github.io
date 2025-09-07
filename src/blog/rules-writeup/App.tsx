@@ -10,9 +10,13 @@ import 'katex/dist/katex.min.css'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import pfp from '../../assets/pfp.png'
+import rulesgui1 from '../../assets/rulesgui1.png'
+import rulesgraph2 from '../../assets/rulesgraph2.png'
 import './App.css'
 
-import post from './post.tsx';
+import post1 from './post1.tsx';
+import post2 from './post2.tsx';
+import post3 from './post3.tsx';
 
 function App() {
 
@@ -36,7 +40,11 @@ function App() {
           </div>
         </div>
         <div className='maincontent'>
-          <Markdown remarkPlugins={[remarkGfm, remarkMath, remarkLint]} rehypePlugins={[rehypeKatex, rehypeRaw, rehypeHighlight]}>{post}</Markdown>
+          <Markdown remarkPlugins={[remarkGfm, remarkMath, remarkLint]} rehypePlugins={[rehypeKatex, rehypeRaw, rehypeHighlight]}>{post1}</Markdown>
+          <img src={rulesgui1} className="postimage"  alt="Image showing the CLI of the rules challenge" width="400"/>
+          <Markdown remarkPlugins={[remarkGfm, remarkMath, remarkLint]} rehypePlugins={[rehypeKatex, rehypeRaw, rehypeHighlight]}>{post2}</Markdown>
+          <img src={rulesgraph2} className="postimage" alt="Image showing a directional graph of the byte arrays" width="600"/>          
+          <Markdown remarkPlugins={[remarkGfm, remarkMath, remarkLint]} rehypePlugins={[rehypeKatex, rehypeRaw, rehypeHighlight]}>{post3}</Markdown>
         </div>
       </div>
     </>

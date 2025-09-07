@@ -95,3 +95,8 @@
   margin: 1em 4em 1em 4em;
 }
 
+.postimage {
+  display: block;
+  margin: auto;
+}
+
