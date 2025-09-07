@@ -1,0 +1,97 @@
+#root {
+  /*max-width: 1280px;*/
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.nameplateContain {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically */
+  justify-content: center; 
+}
+
+.pfp {
+  width : 50%;
+  object-fit: contain;
+  margin: auto;
+  padding: 1em;
+  display:block;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.pfp:hover {
+  filter: drop-shadow(0 0 1em #7dec45aa);
+}
+
+.homeplate {
+  float: left;
+  padding-left: 1em;
+  text-align: left;
+  margin-top: unset;
+  padding-top: 1vh;
+  font-size: 1.6vw;
+  will-change: text-shadow;
+  transition: text-shadow 300ms;
+  color:white;
+  text-decoration: none;
+  font-size: 1.6vw;
+}
+.homeplate:hover {
+  text-shadow: 0 0 2.5vh #0cc0e0aa;
+}
+
+.nameplate {
+  float: left;
+  padding-left: 1em;
+  text-align: left;
+  margin-top: unset;
+  font-size: 1.6vw;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: [line1] 15% [line2] 75% [line3];
+  height: 100%;;
+}
+.sidebarContain {
+  grid-column-start: line1;
+  grid-column-end: line2;
+}
+.sidebar {
+  background-color: dimgray;
+  height: 100vh;
+  width: 15%;
+  grid-column-end: line1;
+  overflow: hidden;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  position: fixed;
+  top: 0 !important;
+}
+.maincontent {
+  grid-column: [line2] / [line3];
+  height:auto;
+  overflow-y: auto;
+  text-align: left;
+  margin: 1em 4em 1em 4em;
+}
+
