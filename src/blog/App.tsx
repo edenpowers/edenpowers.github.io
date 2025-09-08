@@ -33,7 +33,7 @@ function App() {
                 corctf2025 crypto/rules
               </h3>
               <p className='postDescription'>
-                This is some text
+                My writeup for the crypto/rules problem in corctf2025.
               </p></a>
             </div>
           </div>
